@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" class="has-text-white has-background-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="../static/css/css.css">
+    <link rel="icon" href="../static/img/logo.png">
+
+    <title>{{name}}</title>
+</head>
+<body style="min-height: 100vh;" >
+    <header>
+        {%block header%}
+            {% include 'header.html' %}
+        {%endblock%}
+    </header>
+
+    <main>
+        {%block content%}
+        {%endblock%}
+    </main>
+
+    {%if want_footer%}
+    <footer class="footer">
+        <div class="container">
+          <div class="columns">
+            <div class="column">
+              <h4 class="title is-4">Redes sociales</h4>
+              <div class="social-icons">
+                <a href="#"><i class="material-icons">facebook</i></a>
+                <a href="#"><i class="material-icons">instagram</i></a>
+                <a href="#"><i class="material-icons">ondemand_video</i></a>
+              </div>
+            </div>
+          </div>
+          <p class="has-text-centered">&copy; 2023 Obra Maestra</p>
+        </div>
+    </footer>
+    {%endif%}
+</body>
+</html>

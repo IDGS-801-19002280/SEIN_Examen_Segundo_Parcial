@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<section class="hero is-dark is-fullheight is-forest">
+    <div class="hero-body forest-ground">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <h1 class="title is-size-1 is-bold has-text-white">¡Aprovecha nuestras ofertas!</h1>
+          <p class="subtitle is-size-4 has-text-white">¡No te lo puedes perder!</p>
+        </div>
+        <div class="column">
+          <div class="card is-blur">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="https://media.revistaad.es/photos/60c22da019c8e1b95e8d555b/16:9/w_1456,h_819,c_limit/202522.jpg" alt="Producto">
+              </figure>
+            </div>
+            <div class="card-content">
+              <h2 class="title is-size-4">Producto en oferta</h2>
+              <p class="subtitle is-size-5">El Guernica, de Pablo Picasso</p>
+              <a href="#" class="button is-success is-outlined is-fullwidth is-rounded has-text-weight-bold">Ver más</a>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+            <div class="card is-blur">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="https://i0.wp.com/hotbook.mx/wp-content/uploads/2014/10/hotbook-94.jpg?resize=800%2C600&ssl=1" alt="Producto">
+                </figure>
+              </div>
+              <div class="card-content">
+                <h2 class="title is-size-4">Producto en oferta</h2>
+                <p class="subtitle is-size-5">La Persistencia de la Memoria, Salvador Dalí</p>
+                <a href="#" class="button is-success is-outlined is-fullwidth is-rounded has-text-weight-bold">Ver más</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ <br>
+  <section class="container">
+    <h1 class="title is-1 has-text-white">Conóce nuestros productos</h1>
+    <section class="section">
+        <div class="container">
+          <div class="columns is-multiline">
+            {% for producto in productos %}
+            <div class="column is-one-third">
+              <div class="card is-blur">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="{{ producto.photo_url }}" alt="Imagen">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    <p class="title is-4 has-text-white">{{producto.name}}</p>
+                    <p class="subtitle is-6 has-text-white">{{producto.short_desc}}</p>
+                  </div>
+                </div>
+                <footer class="card-footer">
+                  <a href="#" class="card-footer-item has-text-centered has-text-warning">
+                    Mostrar Objeto
+                  </a>
+                </footer>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="columns is-centered">
+            <div class="column is-narrow">
+              <a href="#" class="button is-rounded is-outlined is-primary">
+                <span>Ir a ver más</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="is-divider">
+
+      <section class="section">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="https://lh3.googleusercontent.com/lHaVC-u0eGZMQpGqSMeDPHGrwoh6gHFfyLVbwQP_1C-vbUS4l-v2-56MyNVRq8ft4Fk2RYxvja4KAFHlJsMrfG4OBf6AUMGk-yDWvEg" alt="Imagen de persona random">
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <h3 class="title is-2 has-text-white">Conócenos</h3>
+              <p class="has-text-white">Somos una tienda de arte comprometida en ofrecer a nuestros clientes una amplia selección de 
+                obras de arte excepcionales y de alta calidad. Nos destacamos por seleccionar cuidadosamente las piezas y por brindar
+                 un servicio personalizado para ayudar a nuestros clientes a encontrar la obra de arte perfecta para su hogar o negocio. 
+                 Nuestra pasión por el arte y nuestra dedicación al servicio nos diferencia de otros en la industria.</p>
+              <br>
+              <a href="#" class="button is-rounded is-outlined is-primary">
+                <span>Ver más</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+  </section>
+{%endblock%}

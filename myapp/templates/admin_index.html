@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<section class="is-admin" style="min-height: 100vh; padding-bottom: 15rem">
+    <div class="container admin-zone">
+        <h1 class="title is-1 has-text-white">Administrador > Productos</h1>
+
+        {%if categorias%}
+        <section class="is-blur" style="padding: 1rem; margin-bottom: 1rem;">
+            {%from '_macros.html' import renderField%}
+            {%from '_macros.html' import textAreaField%}
+            <form action="/admin/register/producto" method="POST">
+              <div class="columns">
+                <div class="column">
+                    {{renderField(form.name)}}
+                </div>
+              </div>
+              <div class="columns is-variable is-3">
+                <div class="column is-one-quarter">
+                    {{textAreaField(form.short_desc)}}
+                </div>
+                <div class="column">
+                    {{textAreaField(form.long_desc)}}
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    {{renderField(form.category, class="select")}}
+                  </div>
+                </div>
+              </div>
+              <br><br>
+              <div class="columns">
+                <div class="column">
+                    {{renderField(form.photo_url)}}
+                </div>
+                <div class="column">
+                    {{renderField(form.price)}}
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button type="submit" class="button is-success is-outlined is-fullwidth is-rounded has-text-weight-bold">Agregar Nuevo Producto</button>
+                </div>
+              </div>
+            </form>
+          </section>
+        {%else%}
+        <div class="notification is-danger">
+            <i class="material-icons">error_outline</i>
+        </span>
+            <strong>Ouch!:</strong> Parece que aún no hay ninguna categoría registrada y por ende no podrás registrar productos. 
+            <a href="/admin/categorias" class="button is-danger is-light">Crear Categorías</a>
+        </div>
+        {%endif%}
+
+        <hr class="is-divider"><br>
+
+        {%if productos%}
+        <section>
+            <h1 class="title is-2 has-text-white">Listado de categorías</h1>
+
+            <table class="table is-striped is-hoverable is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Descripción Corta</th>
+                    <th>Descripción Larga</th>
+                    <th>Categoría</th>
+                    <th>Imagen</th>
+                    <th>Precio</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                  </tr>
+                </thead>
+                {%from '_macros.html' import labelField%}
+                {%from '_macros.html' import textAreaFieldNoLabel%}
+                <tbody>
+                  {% for producto in productos %}
+                  <form method="POST" action="/admin/update/producto">
+                  <tr>
+                    <td>{{labelField(form.id, value = producto.id)}}
+                        {{labelField(form.name, value = producto.name)}}</td>
+                    <td>{{textAreaFieldNoLabel('short_desc', producto.short_desc) }}</td>
+                    <td>{{textAreaFieldNoLabel('long_desc', producto.long_desc) }}</td>
+                    <td>{{renderField(form.category, class="select")}}</td>
+                    <td>{{labelField(form.photo_url, value = producto.photo_url)}}
+                        <img src="{{ producto.photo_url }}" alt="Miniatura de la imagen" width="100px"></td>
+                    <td>{{renderField(form.price, value = producto.price)}}</td>
+                    <td><button type="submit" class="button is-fullwidth"><i class="material-icons">save</i></button>
+                    </form></td>
+                    <td><form method="POST" action="/admin/delete/producto">
+                        {{labelField(form.id, value = producto.id)}}
+                        <button type="submit" class="button is-fullwidth"><i class="material-icons">delete</i></button></td>
+                    </form>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </section>
+        {%else%}
+        <div class="notification is-danger">
+            <i class="material-icons">error_outline</i>
+        </span>
+            <strong>Ouch!:</strong> Parece que aún no hay ningún producto registrado. Prueba añadiendo algunos para empezar.
+        </div>
+        {%endif%}
+    </div>
+</section>
+{%endblock%}

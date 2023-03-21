@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<section class="is-admin" style="min-height: 100vh;">
+    <div class="container admin-zone" style="padding-top: 6rem;">
+        <h1 class="title is-1 has-text-white">Administrador > Categorías</h1>
+
+        <section class="section is-blur">
+            <h1 class="title is-3 has-text-white">Crea una categoría</h1>
+            <div class="container">
+                {%from '_macros.html' import renderField%}
+              <form class="is-horizontal" method="POST" action="/admin/register/categoria">
+                <div class="field">
+                  <div class="control">
+                    {{renderField(form.name)}}
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary is-outlined has-text-weight-bold" type="submit">Enviar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </section>
+        <br>
+        <hr class="is-divider">
+        {%if categorias%}
+        <section>
+            <h1 class="title is-2 has-text-white">Listado de categorías</h1>
+            {%from '_macros.html' import labelField%}
+            <table class="table is-fullwidth" style="margin-right: 0 !important;">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th style="width: 12.5%">Editar</th>
+                    <th style="width: 12.5%">Borrar</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for categoria in categorias %}
+                <form method="POST" action="/admin/update/categoria">
+                <tr>
+                    <td>
+                        {{labelField(form.id, value = categoria.id)}}
+                        {{labelField(form.name, value = categoria.name)}}
+                    </td>
+                    <td>
+                    <button type="submit" class="button is-fullwidth"><i class="material-icons">save</i></button>
+                    </td>
+                </form>
+                    <td>
+                        <form method="POST" action="/admin/delete/categoria">
+                            <input type="hidden" name="id" value="{{categoria.id}}">
+                            {{labelField(form.id, value = categoria.id)}}
+                            <button type="submit" class="button is-fullwidth"><i class="material-icons">delete</i></button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {%else%}
+        <div class="notification is-danger">
+            <i class="material-icons">error_outline</i>
+        </span>
+            <strong>Ouch!:</strong> Parece que aún no hay ninguna categoría registrada y por ende no podrás registrar productos. 
+            Crea algunas para poder continuar.
+        </div>
+        {%endif%}
+    </div>
+</section>
+{%endblock%}

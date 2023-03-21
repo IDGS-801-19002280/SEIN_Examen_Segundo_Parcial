@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<section class="is-admin" style="min-height: 100vh;">
+    <div class="container admin-zone" style="padding-top: 6rem;">
+        <h1 class="title is-1 has-text-white">Administrador > Usuarios</h1>
+        {%if usuarios%}
+        <section>
+            <h1 class="title is-2 has-text-white">Listado de Usuarios</h1>
+            {%from '_macros.html' import labelField%}
+            <table class="table is-fullwidth" style="margin-right: 0 !important;">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th style="width: 12.5%">Rol</th>
+                    <th style="width: 12.5%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>
+                        {{labelField(form.userId, value = usuario.id)}}
+                        {{usuario.username}}
+                    </td>
+                    <td>
+                        <form method="POST" action="/admin/update/user">
+                        {{labelField(form.roleId, class="select")}}
+                    </td>
+                    <td>
+                            <input type="hidden" name="userId" value="{{usuario.id}}">
+                            {%if usuario.username != user.username%}
+                            <button type="submit" class="button"><i class="material-icons">save</i></button></td>
+                            {%endif%}
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {%else%}
+        <div class="notification is-danger">
+            <i class="material-icons">error_outline</i>
+        </span>
+            <strong>Ouch!:</strong> Parece que aún no hay ninguna categoría registrada y por ende no podrás registrar productos. 
+            Crea algunas para poder continuar.
+        </div>
+        {%endif%}
+    </div>
+</section>
+{%endblock%}

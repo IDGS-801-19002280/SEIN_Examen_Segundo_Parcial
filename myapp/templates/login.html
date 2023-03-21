@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<section class="hero is-fullheight is-login">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-one-third">
+            <div class="box is-blur">
+              <h1 class="title has-text-centered has-text-white">Iniciar sesión</h1>
+              {%from "_macros.html" import renderField%}
+              <form method="POST" action="login">
+                {{renderField(form.username)}}
+                {{renderField(form.password)}}
+                <div class="field">
+                  <div class="control">
+                    <label class="checkbox has-text-white">
+                      <input type="checkbox" name="remember">
+                      Recuérdame
+                    </label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="control">
+                    <input type="submit" class="button is-success is-outlined is-fullwidth is-rounded has-text-weight-bold" value="Iniciar sesión">
+                </div>
+              </form> <br>
+              <p class="has-text-centered has-text-white">¿No tienes cuenta? <a class="has-text-warning" href="register">Registrarse</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{%endblock%}

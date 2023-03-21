@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<section class="section is-admin" style="min-height: 100vh;">
+    <div class="container" style="margin-top: 2rem;">
+      <div class="columns is-multiline">
+        {% for producto in productos %}
+          <div class="column is-one-third">
+            <div class="card is-blur">
+              <div class="card-image">
+                <figure class="image is-square">
+                  <img src="{{ producto.photo_url }}" alt="{{ producto.nombre }}">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <p class="title has-text-white">{{ producto.name }}</p>
+                  <p class="subtitle has-text-white">{{ producto.short_desc }}</p>
+                </div>
+                <div class="level">
+                  <div class="level-left">
+                    <div class="level-item">
+                      <span class="tag is-primary">{{ producto.price }} MXN</span>
+                    </div>
+                  </div>
+                  <div class="level-right">
+                    <div class="level-item">
+                      <a class="button is-primary" href="#">Agregar al carrito</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{%endblock%}

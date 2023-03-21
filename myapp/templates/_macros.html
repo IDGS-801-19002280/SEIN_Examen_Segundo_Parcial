@@ -1,0 +1,42 @@
+{% macro renderField(field) %}
+<div class="field">
+    {{field.label(class="label has-text-white")}}
+    <div class="control">
+        {{field(class="input is-rounded is-primary", **kwargs) | safe}}
+    </div>
+</div>
+{%if field.errors%}
+<ul class="control">
+  {%for error in field.errors%}
+  <li class="label has-text-danger"> {{error}} </li>
+  {%endfor%}
+</ul>
+{%endif%}
+{% endmacro %}
+
+{% macro labelField(field) %}
+{{field(class="input is-primary", **kwargs) | safe}}
+{% endmacro %}
+
+{% macro textAreaField(field) %}
+  {{ field.label(class="label has-text-white") }}
+  <div class="control">
+    {{ field(class="textarea input is-primary is-medium", **kwargs) | safe }}
+  </div>
+{% endmacro %}
+
+{% macro textAreaFieldNoLabel(name, info) %}
+  <div class="control">
+    <textarea name="{{name}}" class="textarea input is-primary is-medium" {{ kwargs }}> {{ info }} </textarea>
+  </div>
+{% endmacro %}
+
+{%macro submit_button(type)%}
+{%if type == 'delete'%}
+
+{%elif type == 'update'%}
+
+{%else%}
+
+{%endif%}
+{%endmacro%}

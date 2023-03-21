@@ -1,0 +1,94 @@
+.is-login {
+    background-image: url("/static/img/background.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.is-register {
+  background-image: url('https://1.bp.blogspot.com/-islPfTsEH40/YYoJ8MFNKjI/AAAAAAAAJIo/HBvAKB-zGYIuCvGcZkF-r-HludJp6B5EQCLcBGAsYHQ/s2560/among-trees-night-is-coming-ox-2560x1440.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.is-forest{
+  background-image: url("https://s1.1zoom.me/b5050/470/Rivers_Stones_Mountains_Switzerland_552399_1920x1080.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.is-quarzo{
+  background-image: url("https://previews.123rf.com/images/stevanzz/stevanzz1802/stevanzz180200036/95244684-superficie-de-cuarzo-blanco-para-encimera-de-baño-o-cocina-textura-y-patrón-de-alta-resolución.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.is-admin {
+  background-image: url("/static/img/admin_bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.active{
+  filter: invert();
+}
+
+.navbar-start a{
+  font-weight: 700
+}
+
+.navbar{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.navbar .navbar-brand{
+  margin-right: 1rem;
+}
+
+.is-blur{
+  background-color: rgba(53, 53, 53, 0.8) !important;
+  backdrop-filter: blur(0.2rem);
+}
+
+.is-blur .list:hover{
+  color: black !important;
+}
+
+.navbar-dropdown{
+  border-top: none !important;
+}
+
+.forest-ground{
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+}
+
+.stone-image {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.textarea-min-height {
+  min-height: 100px;
+}
+
+.admin-zone{
+  padding-top: 6rem; background-color: rgba(0,0,0,0.5); min-height:100vh; padding-left: 1rem; padding-right: 1rem; padding-bottom: 3rem;
+}
+
+.tspecial{
+  margin-bottom: 0 !important;
+}

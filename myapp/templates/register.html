@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<section class="hero is-fullheight is-register">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-one-third">
+            <div class="box is-blur">
+              <h1 class="title has-text-centered has-text-white">Registro</h1>
+              {%from "_macros.html" import renderField%}
+              <form method="POST" action="register">
+                {{renderField(form.name)}}
+                {{renderField(form.username)}}
+                {{renderField(form.email)}}
+                {{renderField(form.password)}}
+                <div class="field">
+                  <div class="control">
+                    <input type="submit" class="button is-success is-outlined is-fullwidth is-rounded has-text-weight-bold" value="Registrar">
+                </div>
+              </form> <br>
+              <p class="has-text-centered has-text-white">¿Ya tienes una cuenta? <a class="has-text-warning" href="login">Iniciar sesión</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{%endblock%}
